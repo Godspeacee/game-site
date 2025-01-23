@@ -44,7 +44,7 @@ const Platformiconlist = ({ platforms }: Props) => {
                 aria-label={platform.slug}
                 content={platform.slug}
               >
-                <IconComponent size={24} color="gray" />
+                <IconComponent color="gray" />
               </Tooltip>
             );
           })
