@@ -1,5 +1,5 @@
 import apiClient from "@/services/api-client";
-import { CanceledError } from "axios";
+import { AxiosRequestConfig, CanceledError } from "axios";
 import { useEffect, useState } from "react";
 
 
@@ -9,7 +9,7 @@ interface FetechResponse<T>{
     results: T[];
 }
 
-const useData = <T>(endpoint: string) => {
+const useData = <T>(endpoint: string, requestConfig?: AxiosRequestConfig, deps?:any[]) => {
     const [data, setdata] = useState<T[]>([]);
     const [error, setError] = useState("");
     const [isLoading, setLoading] = useState(false)
@@ -18,7 +18,7 @@ const useData = <T>(endpoint: string) => {
       const controller = new AbortController();
       setLoading(true)
       apiClient
-        .get<FetechResponse<T>>(endpoint, { signal: controller.signal})
+        .get<FetechResponse<T>>(endpoint, { signal: controller.signal, ...requestConfig})
         .then((res) => {
           setdata(res.data.results)
           setLoading(false)
@@ -29,7 +29,7 @@ const useData = <T>(endpoint: string) => {
           setLoading(false)
   
       return () => controller.abort()
-    }, []);
+    }, deps ? [...deps] : []);
   
     return{ data, error, isLoading}
 }
