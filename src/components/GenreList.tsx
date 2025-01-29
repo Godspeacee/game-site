@@ -1,8 +1,9 @@
 import useGenres from "@/Hooks/useGenres";
-import { Box, HStack, Image, Text } from "@chakra-ui/react";
+import { Box, HStack, Image, Spinner, Text } from "@chakra-ui/react";
 
 const GenreList = () => {
-  const { data } = useGenres();
+  const { data, isLoading } = useGenres();
+  if (isLoading) return <Spinner />;
   return (
     <>
       <ul>
