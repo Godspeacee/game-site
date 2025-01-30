@@ -24,7 +24,7 @@ const Platformselector = ({ onselectplatform, selectedPlatform }: Props) => {
           {selectedPlatform?.name || "Platforms"} <FaAngleDown />
         </Button>
       </MenuTrigger>
-      <MenuContent boxSize={"md"}>
+      <MenuContent maxW="sm" borderWidth="1px">
         {data.map((platform) => (
           <MenuItem
             onClick={() => onselectplatform(platform)}
