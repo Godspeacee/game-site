@@ -14,7 +14,7 @@ const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
       <ul>
         {data.map((genre) => (
           <Box key={genre.id} paddingY={5}>
-            <HStack>
+            <HStack gap={-2}>
               <Image
                 boxSize={10}
                 borderRadius={4}
@@ -23,7 +23,7 @@ const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
               <Button
                 fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
                 onClick={() => onSelectGenre(genre)}
-                fontSize={"lg"}
+                fontSize={"md"}
                 variant={"plain"}
               >
                 <Link colorPalette={"pink"}>{genre.name}</Link>

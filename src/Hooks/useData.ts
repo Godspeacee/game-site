@@ -12,7 +12,7 @@ interface FetechResponse<T>{
 const useData = <T>(endpoint: string, requestConfig?: AxiosRequestConfig, deps?:any[]) => {
     const [data, setdata] = useState<T[]>([]);
     const [error, setError] = useState("");
-    const [isLoading, setLoading] = useState(false)
+    const [isLoading, setLoading] = useState(true)
   
     useEffect(() => {
       const controller = new AbortController();
