@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 
 
-interface FetechResponse<T>{
+export interface FetechResponse<T>{
     count:number;
     results: T[];
 }
