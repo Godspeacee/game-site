@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query"
-import  { FetechResponse } from "./useData"
+import  { FetechResponse } from "@/services/api-client"
 import apiClient from "@/services/api-client"
 
 
