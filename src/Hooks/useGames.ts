@@ -24,7 +24,7 @@ export interface Platform{
 
 const useGames = (gameQuery:GameQuery) => 
   useQuery<FetechResponse<Game>, Error>({
-    queryKey :['games'],
+    queryKey :['games', gameQuery],
     queryFn: () => apiClient.get<FetechResponse<Game>>('/games', {
       params: {
         genres:gameQuery.genre?.id,
