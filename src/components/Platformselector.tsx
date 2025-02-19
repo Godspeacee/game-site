@@ -1,5 +1,4 @@
-import { Platform } from "@/Hooks/useGames";
-import usePlatforms from "@/Hooks/usePlatforms";
+import usePlatforms, { Platform } from "@/Hooks/usePlatforms";
 import {
   Button,
   MenuContent,
