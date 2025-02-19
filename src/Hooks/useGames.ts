@@ -26,7 +26,12 @@ const useGames = (gameQuery:GameQuery) =>
   useQuery<FetechResponse<Game>, Error>({
     queryKey :['games'],
     queryFn: () => apiClient.get<FetechResponse<Game>>('/games', {
-      params: {genres:gameQuery.genre?.id, parent_platforms:gameQuery.platform?.id, ordering:gameQuery.sortOrder, search:gameQuery.searchText}
+      params: {
+        genres:gameQuery.genre?.id,
+        parent_platforms:gameQuery.platform?.id,
+        ordering:gameQuery.sortOrder,
+        search:gameQuery.searchText
+       }
     })
     .then(res => res.data),
     staleTime:24*60*60*1000//24hrs
