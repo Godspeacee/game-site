@@ -16,7 +16,6 @@ const useGenres = () =>
 useQuery({
     queryKey:['genres'],
     queryFn: apiClient.getALL,
-    staleTime: 24*60*60*1000 //24hr
 })
  
 
