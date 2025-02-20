@@ -1,3 +1,4 @@
+import usePlatform from "@/Hooks/usePlatform";
 import usePlatforms, { Platform } from "@/Hooks/usePlatforms";
 import {
   Button,
@@ -15,9 +16,7 @@ interface Props {
 
 const Platformselector = ({ onselectplatform, selectedPlatformId }: Props) => {
   const { data, error } = usePlatforms();
-  const selectedPlatform = data?.results.find(
-    (p) => p.id === selectedPlatformId
-  );
+  const selectedPlatform = usePlatform(selectedPlatformId);
   if (error) return null;
   return (
     <MenuRoot>
