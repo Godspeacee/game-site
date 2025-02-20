@@ -1,7 +1,7 @@
 import useGames from "@/Hooks/useGames";
 import { Box, Button, SimpleGrid, Text } from "@chakra-ui/react";
 import GameCard from "./GameCard";
-import GameSkeletons from "../components/GameSkeletons";
+import GameSkeletons from "./GameSkeletons";
 
 import { GameQuery } from "@/App";
 import React from "react";
