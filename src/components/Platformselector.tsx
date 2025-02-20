@@ -10,11 +10,14 @@ import { FaAngleDown } from "react-icons/fa";
 
 interface Props {
   onselectplatform: (platform: Platform) => void;
-  selectedPlatform: Platform | null;
+  selectedPlatformId?: number;
 }
 
-const Platformselector = ({ onselectplatform, selectedPlatform }: Props) => {
+const Platformselector = ({ onselectplatform, selectedPlatformId }: Props) => {
   const { data, error } = usePlatforms();
+  const selectedPlatform = data?.results.find(
+    (p) => p.id === selectedPlatformId
+  );
   if (error) return null;
   return (
     <MenuRoot>
