@@ -1,3 +1,4 @@
+import useGameQueryStore from "@/Zustandstores/GameQuerystore";
 import {
   MenuRoot,
   MenuTrigger,
@@ -7,12 +8,10 @@ import {
 } from "@chakra-ui/react";
 import { FaAngleDown } from "react-icons/fa";
 
-interface Props {
-  onSelectSortOrder: (sortOrders: string) => void;
-  sortOrder: string;
-}
+const seletedOrder = useGameQueryStore((s) => s.gameQuery.sortOrder);
+const setSelectedOrder = useGameQueryStore((s) => s.setSortOrder);
 
-const SortSelector = ({ onSelectSortOrder, sortOrder }: Props) => {
+const SortSelector = () => {
   const sortOrders = [
     { value: "", label: "Relevance" },
     { value: "-added", label: "Date added" },
@@ -23,7 +22,7 @@ const SortSelector = ({ onSelectSortOrder, sortOrder }: Props) => {
   ];
 
   const currentSortOrder = sortOrders.find(
-    (order) => order.value === sortOrder
+    (order) => order.value === seletedOrder
   );
 
   return (
@@ -36,7 +35,7 @@ const SortSelector = ({ onSelectSortOrder, sortOrder }: Props) => {
       <MenuContent maxW="sm" borderWidth="1px">
         {sortOrders.map((order) => (
           <MenuItem
-            onClick={() => onSelectSortOrder(order.value)}
+            onClick={() => setSelectedOrder(order.value)}
             key={order.value}
             value={order.value}
           >

@@ -1,5 +1,6 @@
 import usePlatform from "@/Hooks/usePlatform";
-import usePlatforms, { Platform } from "@/Hooks/usePlatforms";
+import usePlatforms from "@/Hooks/usePlatforms";
+import useGameQueryStore from "@/Zustandstores/GameQuerystore";
 import {
   Button,
   MenuContent,
@@ -9,12 +10,9 @@ import {
 } from "@chakra-ui/react";
 import { FaAngleDown } from "react-icons/fa";
 
-interface Props {
-  onselectplatform: (platform: Platform) => void;
-  selectedPlatformId?: number;
-}
-
-const Platformselector = ({ onselectplatform, selectedPlatformId }: Props) => {
+const Platformselector = () => {
+  const selectedPlatformId = useGameQueryStore((s) => s.gameQuery.platformId);
+  const setSelectedPlatform = useGameQueryStore((s) => s.setPlatformId);
   const { data, error } = usePlatforms();
   const selectedPlatform = usePlatform(selectedPlatformId);
   if (error) return null;
@@ -25,10 +23,11 @@ const Platformselector = ({ onselectplatform, selectedPlatformId }: Props) => {
           {selectedPlatform?.name || "Platforms"} <FaAngleDown />
         </Button>
       </MenuTrigger>
-      <MenuContent maxW="sm" borderWidth="1px">
+
+      <MenuContent maxW="sm" borderWidth="1px" overflow-wrap={"none"}>
         {data?.results.map((platform) => (
           <MenuItem
-            onClick={() => onselectplatform(platform)}
+            onClick={() => setSelectedPlatform(platform.id)}
             value={platform.slug}
             key={platform.id}
           >
