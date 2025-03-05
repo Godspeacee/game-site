@@ -14,7 +14,6 @@ import SortSelector from "./components/SortSelector";
 import GameHeading from "./components/GameHeading";
 function App() {
   const isLg = useBreakpointValue({ base: false, lg: true });
-  //const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
 
   return (
     <>
