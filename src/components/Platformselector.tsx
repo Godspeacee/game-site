@@ -18,7 +18,7 @@ const Platformselector = () => {
   const selectedPlatform = usePlatform(selectedPlatformId);
   if (error) return null;
   return (
-    <Collapsible.Root>
+    <Collapsible.Root position={"relative"}>
       <Collapsible.Trigger asChild>
         <Button variant={"surface"}>
           {selectedPlatform?.name || "Platforms"} <FaAngleDown />

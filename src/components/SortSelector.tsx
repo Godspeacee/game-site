@@ -5,6 +5,7 @@ import {
   Button,
   MenuContent,
   MenuItem,
+  Collapsible,
 } from "@chakra-ui/react";
 import { FaAngleDown } from "react-icons/fa";
 
@@ -26,13 +27,13 @@ const SortSelector = () => {
   );
 
   return (
-    <MenuRoot>
-      <MenuTrigger asChild>
+    <Collapsible.Root position={"relative"}>
+      <Collapsible.Trigger asChild>
         <Button variant={"surface"}>
           Order by :{currentSortOrder?.label || "Relevance"} <FaAngleDown />
         </Button>
-      </MenuTrigger>
-      <MenuContent maxW="sm" borderWidth="1px" position={"absolute"}>
+      </Collapsible.Trigger>
+      <Collapsible.Content maxW="sm" borderWidth="1px" position={"absolute"}>
         {sortOrders.map((order) => (
           <MenuItem
             onClick={() => setSelectedOrder(order.value)}
@@ -42,8 +43,8 @@ const SortSelector = () => {
             {order.label}
           </MenuItem>
         ))}
-      </MenuContent>
-    </MenuRoot>
+      </Collapsible.Content>
+    </Collapsible.Root>
   );
 };
 
