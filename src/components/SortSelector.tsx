@@ -36,13 +36,13 @@ const SortSelector = () => {
       </Collapsible.Trigger>
       <Collapsible.Content maxW="sm" borderWidth="1px" position={"absolute"}>
         {sortOrders.map((order) => (
-          <Button
+          <MenuItem
             onClick={() => setSelectedOrder(order.value)}
             key={order.value}
             value={order.value}
           >
             {order.label}
-          </Button>
+          </MenuItem>
         ))}
       </Collapsible.Content>
     </Collapsible.Root>
