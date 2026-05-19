@@ -24,7 +24,12 @@ const Platformselector = () => {
         </Button>
       </MenuTrigger>
 
-      <MenuContent maxW="sm" borderWidth="1px" overflow-wrap={"none"}>
+      <MenuContent
+        maxW="sm"
+        borderWidth="1px"
+        overflow-wrap={"none"}
+        position={"absolute"}
+      >
         {data?.results.map((platform) => (
           <MenuItem
             onClick={() => setSelectedPlatform(platform.id)}

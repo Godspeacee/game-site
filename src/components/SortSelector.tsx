@@ -22,7 +22,7 @@ const SortSelector = () => {
   ];
 
   const currentSortOrder = sortOrders.find(
-    (order) => order.value === seletedOrder
+    (order) => order.value === seletedOrder,
   );
 
   return (
@@ -32,7 +32,7 @@ const SortSelector = () => {
           Order by :{currentSortOrder?.label || "Relevance"} <FaAngleDown />
         </Button>
       </MenuTrigger>
-      <MenuContent maxW="sm" borderWidth="1px">
+      <MenuContent maxW="sm" borderWidth="1px" position={"absolute"}>
         {sortOrders.map((order) => (
           <MenuItem
             onClick={() => setSelectedOrder(order.value)}
