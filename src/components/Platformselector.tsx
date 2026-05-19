@@ -7,6 +7,7 @@ import {
   MenuItem,
   MenuRoot,
   MenuTrigger,
+  Collapsible,
 } from "@chakra-ui/react";
 import { FaAngleDown } from "react-icons/fa";
 
@@ -17,14 +18,14 @@ const Platformselector = () => {
   const selectedPlatform = usePlatform(selectedPlatformId);
   if (error) return null;
   return (
-    <MenuRoot>
-      <MenuTrigger asChild>
+    <Collapsible.Root>
+      <Collapsible.Trigger asChild>
         <Button variant={"surface"}>
           {selectedPlatform?.name || "Platforms"} <FaAngleDown />
         </Button>
-      </MenuTrigger>
+      </Collapsible.Trigger>
 
-      <MenuContent
+      <Collapsible.Content
         maxW="sm"
         borderWidth="1px"
         overflow-wrap={"none"}
@@ -39,8 +40,8 @@ const Platformselector = () => {
             {platform.name}
           </MenuItem>
         ))}
-      </MenuContent>
-    </MenuRoot>
+      </Collapsible.Content>
+    </Collapsible.Root>
   );
 };
 
